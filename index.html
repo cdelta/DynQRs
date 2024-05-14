@@ -6,22 +6,29 @@
 
 </head>
 <body>
-<iframe
-  id="Example2"
-  title="iframe Example 2"
-  width="600"
-  height="900"
-  style="border:none"
-  src="https://secretariademovilidad.quito.gob.ec/secmov/la-institucion-2/">
-</iframe>
-<iframe
-  id="Example2"
-  title="iframe Example 2"
-  width="400"
-  height="300"
-  style="border:none"
-  src="https://secretariademovilidad.quito.gob.ec/secmov/la-institucion-2/">
-</iframe>
+<iframe id="iframe1" style="width: 50%; height: 500px; border: none;"></iframe>
+<iframe id="iframe2" style="width: 50%; height: 500px; border: none;" src="https://secretariademovilidad.quito.gob.ec/secmov/la-institucion-2/"></iframe>
+
+<script>
+    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbyqAvyoJxACZ9EVS0uNg0J0i3Av74t74IN-Rm-gsrOy5bdnRKaJNQE_ewrBmEAkw84CuQ/exec";
+    
+    var url = document.location.href;
+    var k = url.substr(url.lastIndexOf("k=")+2);
+    
+    if(k){
+      fetch(AS_URL_BASE+'?k='+k)
+      .then(r => r.text())
+      .then((r) => {
+        console.log(r);
+        //document.write(r);
+        if(r){
+          document.getElementById("iframe1").src = r;
+        }
+      })
+      .catch(err => console.log(err))
+    }
+</script>
+
 
    
     
